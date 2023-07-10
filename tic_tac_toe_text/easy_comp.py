@@ -1,6 +1,6 @@
 from random import randint
-from tabnanny import check
-from tkinter import Y 
+# from tabnanny import check
+# from tkinter import Y 
 # from tic_tac_toe import empty_spot, player1, player2
 # from header import empty_spot, player1, player2
 # import header as h
@@ -17,10 +17,12 @@ def comp_decide(the_board):
         print("computer checking spot: (", x_guess, ",", y_guess, ")...")
         check_result = check_space_for_empty(the_board, x_guess= x_guess-1, y_guess= y_guess-1)
         if check_result: # the generated coords contain an empty spot 
-            the_board[y_guess-1][x_guess-1] = h.player2
+            # the_board[y_guess-1][x_guess-1] = h.player2 # this line writes to columns, not elements
+            # the_board[y_guess-1][x_guess-1] = h.player2
             # print(the_board)
             not_yet_placed = False  # a spot has now been placed.
             break
+    the_board[y_guess-1][x_guess-1] = h.player2 # this line writes to columns, not elements
 
 # TODO: solve the bug of 'filling up an entire column'
 def check_space_for_empty ( the_board, x_guess=0, y_guess=0):
