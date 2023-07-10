@@ -25,10 +25,16 @@ print_board()
 def player_turn():
     # take 2 integer inputs from user, the row, and the column
     pass
-    print(" please give 2 integers for your spot (1-3), (row, col):  ", end='')
+    # print(" please give 2 integers for your spot (1-3), (row, col):  ", end='')
+    # input1 = input().split()
+    # y = int(input1[0])
+    # x = int(input1[1])
+
+    print(" please give 2 integers for your spot (1-3), (x, y):  ", end='')
     input1 = input().split()
-    y = int(input1[0])
-    x = int(input1[1])
+    x = input1[0]
+    y = input[1]
+
     the_grid[y-1][x-1] = h.player1
     print_board()
 
