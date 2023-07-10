@@ -5,7 +5,13 @@
 # from header import empty_spot, player1, player2
 import my_header as h
 
-the_grid = [ [h.empty_spot]*3] * 3 # 3x3 grid 
+# the_grid = [ [h.empty_spot]*3] * 3 # 3x3 grid 
+emp_spot = h.empty_spot
+# the_grid = [3][3]
+# for i in range(0,3):
+    # for j in range(0,3):
+        # the_grid[i][j] = emp_spot
+the_grid = [ [emp_spot]*3 for i in range(3)]
 def print_board():
     for y in range(len(the_grid)):
         for x in range(len(the_grid[y])):
