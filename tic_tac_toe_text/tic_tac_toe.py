@@ -30,6 +30,7 @@ def player_turn():
     y = int(input1[0])
     x = int(input1[1])
     the_grid[y-1][x-1] = h.player1
+    print_board()
 
 import easy_comp as ec 
 def comp_turn():
@@ -44,6 +45,5 @@ def comp_turn():
 # for x in range(3): 
     # comp_turn()
 
-for x in range(3):
-    player_turn()
-    print_board()
+# for x in range(3):
+    # player_turn()
