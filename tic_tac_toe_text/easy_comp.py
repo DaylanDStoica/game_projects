@@ -22,6 +22,7 @@ def comp_decide(the_board):
             not_yet_placed = False  # a spot has now been placed.
             break
 
+# TODO: solve the bug of 'filling up an entire column'
 def check_space_for_empty ( the_board, x_guess=0, y_guess=0):
     # return True if the given coords are empty
     # return False otherwise
