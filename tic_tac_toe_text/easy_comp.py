@@ -25,6 +25,7 @@ def comp_decide(the_board):
     the_board[y_guess-1][x_guess-1] = h.player2 # this line writes to columns, not elements
 
 # TODO: solve the bug of 'filling up an entire column'
+# SOLVED
 def check_space_for_empty ( the_board, x_guess=0, y_guess=0):
     # return True if the given coords are empty
     # return False otherwise
