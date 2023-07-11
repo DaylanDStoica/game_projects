@@ -53,3 +53,52 @@ def comp_turn():
 
 # for x in range(3):
     # player_turn()
+
+def determine_winner():
+    # at end of each turn, look for any 3-in-a-row
+    # any of the columns (3),
+    # any of the rows (3), 
+    # any of the diagonals (2)
+
+    # return 0 if there are no winners
+    # return 1 if player1 wins 
+    # return 2 if player2 wins
+
+    # return -1 if no players win, and the board is full , a tie
+
+def check_the_columns():
+    # check the 3 colums for 3 of a kind, in a column
+    # return 0 if no winner
+    # return 1 if player1 wins
+    # return 2 if player2 wins
+    pass
+    for x in range(3):
+        first_cell = the_grid[0][x]
+        for y in range(1,3):
+            if first_cell != the_grid[y][x]:
+                # if the second/third cell in a row does not match the first cell in a row
+                # skip the row
+                # continue
+                break
+
+
+
+def check_the_rows():
+    # check the row, 3 of a kind in a single row
+    pass 
+    for y in range(3): # cycle through the rows
+        first_cell = the_grid[y][0]
+        for x in range(1,3): # cycle through the columns within the row
+            # if the not first cell does not match the first cell, skip this row
+            # , and go to the next row
+            if first_cell != the_grid[y][x]: 
+                # continue
+                break
+
+def check_the_diagonals():
+    # check the diagonals
+    # 0,0  1,1  2,2 (topleft to downright)
+    # 2,0 1,1 0,2 (topright to downleft)
+    pass
+
+
