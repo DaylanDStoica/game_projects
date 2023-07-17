@@ -32,8 +32,8 @@ def player_turn():
 
     print(" please give 2 integers for your spot (1-3), (x, y):  ", end='')
     input1 = input().split()
-    x = input1[0]
-    y = input[1]
+    x = int(input1[0])
+    y = int(input1[1])
 
     the_grid[y-1][x-1] = h.player1
     print_board()
@@ -54,6 +54,10 @@ def comp_turn():
 # for x in range(3):
     # player_turn()
 
+TIE_VALUE = -1 # TIE for the game, no more open spaces
+IS_SPACE = 0 # there is more remaining spaces, do not yet result in tie
+WINNER_1 = 1 # player 1 wins
+WINNER_2 = 2 # player 2 wins
 def determine_winner():
     # at end of each turn, look for any 3-in-a-row
     # any of the columns (3),
@@ -65,6 +69,27 @@ def determine_winner():
     # return 2 if player2 wins
 
     # return -1 if no players win, and the board is full , a tie
+
+    col_result = check_the_columns()
+    row_result = check_the_rows()
+    diag_result = check_the_diagonals()
+    # if col_result== TIE_VALUE or row_result == TIE_VALUE or diag_result == TIE_VALUE:
+        # return TIE_VALUE
+    
+    # add the result values together
+
+
+    # set the results in an array
+    # and search for any values that match a condition for a player winning
+    result_array = [ col_result, row_result, diag_result]
+    if WINNER_1 in result_array:
+        return WINNER_1
+    elif WINNER_2 in result_array:
+        return WINNER_2
+    elif IS_SPACE in result_array:
+        return IS_SPACE
+    else: # with no winners, and no empty spaces, there is a tie
+        return TIE_VALUE
 
 def check_the_columns():
     # check the 3 colums for 3 of a kind, in a column
@@ -81,6 +106,19 @@ def check_the_columns():
                 # continue
                 break
 
+            if y == 2 : 
+                # reach the end of the row without a mismatch, then 3 in a row
+
+                # check that the row is not empty
+                if first_cell == h.empty_spot:
+                    continue
+                elif first_cell == h.player1:
+                    return 1
+                elif first_cell == h.player2:
+                    return 2
+
+    return 0
+
 
 
 def check_the_rows():
@@ -94,6 +132,19 @@ def check_the_rows():
             if first_cell != the_grid[y][x]: 
                 # continue
                 break
+            if x == 2 : 
+                # reach the end of the row without a mismatch, then 3 in a row
+
+                # check that the row is not empty
+                if first_cell == h.empty_spot:
+                    continue
+                elif first_cell == h.player1:
+                    return 1
+                elif first_cell == h.player2:
+                    return 2
+
+    return 0
+
 
 def check_the_diagonals():
     # check the diagonals
@@ -102,3 +153,37 @@ def check_the_diagonals():
     pass
 
 
+def is_board_not_full():
+    # boolean
+    # return full if there are no more spaces available
+    # if h.empty_spot in the_grid:
+    if emp_spot  in the_grid:
+        # there is an empty spot in the board 
+        # return False
+        return True
+    else:
+        # print("the board is full 1")
+        # return True
+        return False
+def play_game():
+    # loop through player/comp turns until winner or board full 
+    # current_state = 0
+    # while current_state == 0:
+    #     player_turn()
+    #     if is_board_not_full(): # after 9 turns (odd count), the board will be full.
+    #         # player goes first, so they go on odd turns
+    #         current_state = determine_winner()
+    #         print("the board is full")
+    #         break
+    #     comp_turn()
+    # print(" current state: ", current_state)
+
+    current_state = 0
+    while current_state == 0:
+        player_turn()
+        comp_turn()
+        current_state = determine_winner()
+
+    print("Winner is ", current_state)
+
+play_game()
