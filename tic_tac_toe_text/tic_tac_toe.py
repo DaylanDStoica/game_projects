@@ -24,11 +24,6 @@ print_board()
 
 def player_turn():
     # take 2 integer inputs from user, the row, and the column
-    pass
-    # print(" please give 2 integers for your spot (1-3), (row, col):  ", end='')
-    # input1 = input().split()
-    # y = int(input1[0])
-    # x = int(input1[1])
 
     print(" please give 2 integers for your spot (1-3), (x, y):  ", end='')
     input1 = input().split()
@@ -165,24 +160,27 @@ def is_board_not_full():
         # print("the board is full 1")
         # return True
         return False
+
+
 def play_game():
     # loop through player/comp turns until winner or board full 
-    # current_state = 0
-    # while current_state == 0:
-    #     player_turn()
-    #     if is_board_not_full(): # after 9 turns (odd count), the board will be full.
-    #         # player goes first, so they go on odd turns
-    #         current_state = determine_winner()
-    #         print("the board is full")
-    #         break
-    #     comp_turn()
-    # print(" current state: ", current_state)
 
     current_state = 0
-    while current_state == 0:
+    # while current_state == 0:
+    #     player_turn()
+    #     comp_turn()
+    #     current_state = determine_winner()
+        
+    # loop infinitely, breaking out when current_state == 0
+    while True:
         player_turn()
-        comp_turn()
+        current_state = determine_winner() 
+        if current_state != 0:
+            break
+        comp_turn() 
         current_state = determine_winner()
+        if current_state != 0:
+            break 
 
     print("Winner is ", current_state)
 
