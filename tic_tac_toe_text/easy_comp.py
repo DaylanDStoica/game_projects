@@ -6,6 +6,7 @@ from random import randint
 # import header as h
 # from . import my_header as h
 import my_header as h
+
 def comp_decide(the_board):
     # given a 3x3 tic tac toe board 
     # randomly choose an open space to place a piece
