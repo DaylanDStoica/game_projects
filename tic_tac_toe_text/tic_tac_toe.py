@@ -143,9 +143,54 @@ def check_the_rows():
 
 def check_the_diagonals():
     # check the diagonals
+    result = 0
     # 0,0  1,1  2,2 (topleft to downright)
+    # first_cell = the_grid[0][0]
+    # for x in range(1,3):
+    #     if first_cell != the_grid[x][x]: # the cells do not match 
+    #         break
+    # # 2,0 1,1 0,2 (topright to downleft)
+    # first_cell = the_grid[0][2]
+    # for y in range(1,3):
+    #     if first_cell != the_grid[y][2-y]:
+    #         break
+    # return result
+
+    # 0,0  1,1  2,2 (topleft to downright)
+    diag1 = [ the_grid[0][0], the_grid[1][1], the_grid[2][2] ]
     # 2,0 1,1 0,2 (topright to downleft)
-    pass
+    diag2 = [ the_grid[2][0], the_grid[1][1], the_grid[0][2] ]
+
+    if h.empty_spot in diag1 and h.empty_spot in diag2:
+        # if both diagonals have an empty spot, there is no winner by diagonal
+        # return ContinePlay
+        return 0
+    else:
+        # there are no open spaces in the diagonals, return Tie, Player1, or Player2
+        
+        # if the diagonals are not all equal 
+        # , there will only be one value in the set
+        # diagonal1
+        if len( set( diag1) ) == 1:
+            # there is only one value
+            if diag1[0] == h.player1:
+                return 1
+            elif diag[1] == h.player2:
+                return 2
+        # diagonal2
+        if len( set(diag2) ) == 1:
+            if diag2[0] == h.player1:
+                return 1
+            elif diag2[0] == h.player2:
+                return 2
+
+        
+
+        else:
+            # both diagaonals are filled, and neither have 1 value
+            # return a Tie 
+            return -1
+
 
 
 def is_board_not_full():
